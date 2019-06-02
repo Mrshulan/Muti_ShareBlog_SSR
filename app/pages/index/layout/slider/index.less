@@ -1,0 +1,105 @@
+@keyframes mylogo {
+	0% {
+		transform: rotate(0deg) scale(0.8, 0.8);
+		opacity: 1;
+	}
+	25% {
+		transform: rotate(0deg) scale(1, 1);
+		opacity: 0.8;
+	}
+	100% {
+		transform: rotate(0deg) scale(0.8, 0.8);
+		opacity: 1;
+	}
+}
+
+@-moz-keyframes mylogo {
+	0% {
+		transform: rotate(0deg) scale(0.8, 0.8);
+		opacity: 1;
+	}
+	25% {
+		transform: rotate(0deg) scale(1, 1);
+		opacity: 0.8;
+	}
+	100% {
+		transform: rotate(0deg) scale(0.8, 0.8);
+		opacity: 1;
+	}
+}
+
+@-webkit-keyframes mylogo {
+	0% {
+		transform: rotate(0deg) scale(0.8, 0.8);
+		opacity: 1;
+	}
+	25% {
+		transform: rotate(0deg) scale(1, 1);
+		opacity: 0.8;
+	}
+	100% {
+		transform: rotate(0deg) scale(0.8, 0.8);
+		opacity: 1;
+	}
+}
+
+@-o-keyframes mylogo {
+	0% {
+		transform: rotate(0deg) scale(0.8, 0.8);
+		opacity: 1;
+	}
+	25% {
+		transform: rotate(0deg) scale(1, 1);
+		opacity: 0.8;
+	}
+	100% {
+		transform: rotate(0deg) scale(0.8, 0.8);
+		opacity: 1;
+	}
+}
+.right {
+	text-align: center;
+	.right-logo {
+		width: 130px;
+		border-radius: 50%;
+		animation: mylogo 3s;
+		-moz-animation: mylogo 3s; /* Firefox */
+		-webkit-animation: mylogo 3s; /* Safari and Chrome */
+		-o-animation: mylogo 3s; /* Opera */
+		animation-iteration-count: infinite;
+	}
+	.title {
+		font-size: 30px;
+		font-weight: bold;
+	}
+	.right-signature {
+		padding: 10px 0 20px 0;
+		margin-bottom: 10px;
+		border-bottom: 1px solid #eee;
+	}
+	.right-info {
+		margin-bottom: 10px;
+		border-bottom: 1px solid #eee;
+		.title {
+			font-size: 14px;
+			color: #969696;
+		}
+		.introduce {
+			color: #333;
+			line-height: 26px;
+			text-align: left;
+			padding: 20px 0;
+		}
+		.footer {
+			padding-bottom: 10px;
+		}
+	}
+	.tags {
+		min-height: 200px;
+		padding: 5px 0 20px 0;
+		.title {
+			font-size: 14px;
+			color: #969696;
+		}
+	}
+}
