@@ -8,11 +8,10 @@
  module.exports = {
   // 生产环境
   production: {
-    port: 80,                               // 服务器启动的端口号
+    port: 3000,                               // 服务器启动的端口号
     env: 'production',                      // 环境
     publicPath: '/',                        // 静态资源地址
-    // devtool: '#source-map',                 // devtool/
-    noHash: true,                          // 生产的静态资源是否需要hash值(便于开发)
+    noHash: false,                          // 生产的静态资源是否需要hash值(便于开发)
   },
   // 开发环境
   development: {
@@ -20,6 +19,6 @@
     env: 'development',                     // 环境
     publicPath: '/',                        // 静态资源地址
     devtool: 'eval',                        // devtool
-    noHash: false,                           // 开发的静态资源是否需要hash值(便于开发)
+    noHash: true,                           // 开发的静态资源是否需要hash值(便于开发)
   }
  }

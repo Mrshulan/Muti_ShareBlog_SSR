@@ -92,7 +92,10 @@ module.exports = config => {
         },
         {
           test: /\.(png|jpg|gif|svg)$/,
-          loader: `url-loader?limit=4000&name=${config.imagePath}${config.noHash ? '[name].[ext]' : '[name].[contenthash:8]'}.[ext]`
+          loader: `url-loader?limit=4000&name=static/img/${config.publicPath}${config.noHash ? '[name].[ext]' : '[name].[contenthash:8]'}.[ext]`,
+          options:{
+            publicPath:'static/img/'
+          }
         },
         {
           test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
