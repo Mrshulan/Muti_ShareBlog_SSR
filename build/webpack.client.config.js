@@ -45,14 +45,31 @@ if (process.env.NODE_ENV === 'production') {
         automaticNameDelimiter: '~',
         name: true,
         cacheGroups: {
-            vendor: {
-                test: /[\\/]node_modules[\\/]/,
+            commons: {
+                name: 'commons',
                 chunks: 'all',
-                name: 'vendor',
-                minChunks: 1,
-                priority: 10
-            }
+                minChunks: 2
+              },
+            'react-vendor': {
+								enforce: true,	
+                test: /[\\/]node_modules[\\/](react|react-dom|redux|react-redux|redux-thunk|react-router-dom|react-router|react-router-config|)[\\/]/,
+								name: 'react-vendor',
+								chunks: "initial",
+								priority: 10,
+                minChunks: 1,								
+                reuseExistingChunk: true
+            },
+            'antd-vendor': {
+                test: /[\\/]node_modules[\\/](antd)[\\/]/,
+								name: 'antd-vendor',
+								chunks: "initial",
+								enforce: true,								
+								priority: 9,
+                minChunks: 1,								
+                reuseExistingChunk: true
+            },
         }
+        
     };
     clientConfig.optimization.runtimeChunk = {
         name: 'manifest',

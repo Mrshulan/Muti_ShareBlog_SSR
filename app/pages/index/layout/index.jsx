@@ -30,7 +30,7 @@ const Layouts = (props) => {
   }
 
   useEffect(() => {
-    if(!props.userInfo.userId) {
+    if(props.userInfo.userId === null) {
       props.recovery()
     }
   },[]) 
@@ -44,7 +44,7 @@ const Layouts = (props) => {
             <Content style={{ padding: '0 24px 0 0', minHeight: 280 }}>{renderRoutes(props.route.routes)}</Content>
             {isShowSlider ? (
               <Sider width={350} style={{ background: '#fff' }}>
-                <SliderRight data={props.userInfo}/>
+                <SliderRight data={props.userInfo.info ? props.userInfo : {info:{}}}/>
               </Sider>
             ): (
               ''

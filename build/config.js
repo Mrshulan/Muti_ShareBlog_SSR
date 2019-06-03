@@ -8,7 +8,7 @@
  module.exports = {
   // 生产环境
   production: {
-    port: 3000,                               // 服务器启动的端口号
+    port: 3000,                              // 服务器启动的端口号
     env: 'production',                      // 环境
     publicPath: '/',                        // 静态资源地址
     noHash: false,                          // 生产的静态资源是否需要hash值(便于开发)
