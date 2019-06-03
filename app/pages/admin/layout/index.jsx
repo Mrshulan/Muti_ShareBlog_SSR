@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Layout } from 'antd'
+import { renderRoutes } from "react-router-config";
 
 import SiderBar from './siderbar'
 import HeaderTop from './header'
@@ -35,7 +36,7 @@ class AdminLayout extends Component {
                 background: '#fff',
                 minHeight: 280
               }}>
-              {this.props.children}
+              {renderRoutes(this.props.route.routes)}
             </Content>
             <Footer style={{ textAlign: 'center' }}>多人共享博客-用户页 ©2019</Footer>
           </Layout>

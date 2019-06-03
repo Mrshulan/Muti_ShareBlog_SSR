@@ -15,7 +15,7 @@ class Header extends Component {
 
   renderDropDownMenu = () => {
     return (
-      <Menu className='menu'>
+      <Menu>
         <Menu.Item>
           <span onClick={() => this.props.history.push('/')}>返回主页</span>
         </Menu.Item>
@@ -31,13 +31,13 @@ class Header extends Component {
     const { collapsed, username, avatar} = this.props
 
     return (
-      <div className="admin-header-container">       
+      <div styleName="admin-header-container">       
         <Icon
           type={collapsed ? 'menu-unfold' : 'menu-fold'}
-          className={'trigger'}
+          styleName={'trigger'}
           onClick={this.props.onToggle}
         />
-        <div className="header-right">
+        <div styleName="header-right">
           <Dropdown overlay={this.renderDropDownMenu()}>
             <span>
               <Avatar src={(isPro ? 'http://mrshulan.xin' : 'http://127.0.0.1:6001') + avatar} /> { username }

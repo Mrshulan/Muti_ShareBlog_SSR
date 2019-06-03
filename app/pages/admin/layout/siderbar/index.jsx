@@ -20,12 +20,12 @@ class Siderbar extends Component {
   }
 
   renderMenu = data => {
-    const renderRoute = (item, routeContextPath) => {
-      if(this.props.role === '1' && item.path === 'users') return
-      if(this.props.role === '1' && item.path === 'userArticles') return
-      if(this.props.role === '1' && item.path === 'categories') return
-      let newContextPath = item.path ? `${routeContextPath}/${item.path}` : routeContextPath
-      if(item.childRoutes) {
+    const renderRoute = (item) => {
+      if(this.props.role === '1' && item.path === '/user/users') return
+      if(this.props.role === '1' && item.path.includes('userArticles')) return
+      if(this.props.role === '1' && item.path.includes('categories')) return
+      
+      if(item.routes) {
         return (
           <SubMenu
             title={
@@ -34,16 +34,16 @@ class Siderbar extends Component {
                 <span>{item.name}</span>
               </span>
             }
-            key={newContextPath}
+            key={item.path}
           >
-           {item.childRoutes.map(r => renderRoute(r, newContextPath))}
+           {item.routes.map(r => renderRoute(r))}
           </SubMenu>
         )
       } else {
         return (
           item.name && (
-            <Menu.Item key={newContextPath}>
-              <NavLink to={newContextPath}>
+            <Menu.Item key={item.path}>
+              <NavLink to={item.path}>
                 {item.icon && <Icon type={item.icon} />}
                 <span>{item.name}</span>
               </NavLink>
@@ -52,7 +52,7 @@ class Siderbar extends Component {
         )
       }
     }
-    return data.childRoutes.map(d => renderRoute(d, '/user'))
+    return data.routes.map(d => renderRoute(d))
   }
 
   onOpenChange = openKeys => {

@@ -52,7 +52,7 @@ class InfoManage extends Component{
   render() {
     const { info, tellphone }  = this.props
     return (
-      <div className="profile">
+      <div styleName="profile">
         <Input 
           addonBefore="手机号"
           style={{ marginBottom: 20 }}

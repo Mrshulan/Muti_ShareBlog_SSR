@@ -2,7 +2,7 @@ import adminRoutes from './admin'
 import homeRoutes from './home'
 
 let routes = [
-  // adminRoutes,
+  adminRoutes,
   homeRoutes,
 ]
 

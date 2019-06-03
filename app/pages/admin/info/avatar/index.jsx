@@ -59,7 +59,7 @@ class AvatarCol extends Component {
       <Upload
         name="avatar"
         listType="picture-card"
-        className="avatar-uploader"
+        styleName="avatar-uploader"
         showUploadList={false}
         action={isPro ? "http://mrshulan.xin/api/upload" : 'http://127.0.0.1:6001/upload'}
         beforeUpload={beforeUpload}
