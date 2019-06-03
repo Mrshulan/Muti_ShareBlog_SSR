@@ -27,9 +27,9 @@ export default ctx => {
       // console.log(routes)
       resolve(
         <Provider store={store}>
-          <StaticRouter location={ctx.url} context={ctx}>
-              { routes } 
-          </StaticRouter>
+            <StaticRouter location={ctx.url} context={ctx}>
+                { routes } 
+            </StaticRouter>
         </Provider>
       )
     })

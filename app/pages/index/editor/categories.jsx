@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Tag } from 'antd'
+import './index.less'
 
 const CheckableTag = Tag.CheckableTag
 
@@ -29,8 +30,8 @@ class SelectCates extends Component {
     const { selectList } = this.state
 
     return (
-      <div className="editItem">
-        <span className="label">分类:</span>
+      <div styleName="editItem">
+        <span styleName="label">分类:</span>
         {this.props.categoryList.map((item) => (
             <CheckableTag
               key={item.linkname}

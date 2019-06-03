@@ -17,10 +17,10 @@ const Editor = ({ onChange, onSubmit, submitting, value }) => (
       <TextArea row={4} placeholder="说点什么吧" onChange={onChange} value={value} />
     </Form.Item>
     <Form.Item>
-      <div className='controls'>
-        <i className="iconfont icon-tips"></i>
-        <span className='support-tip'>支持Markdown语法</span>
-        <Button className="" htmlType="submit" loading={submitting} onClick={onSubmit} type="primary">
+      <div styleName='controls'>
+        <i styleName="icon-tips"></i>
+        <span styleName='support-tip'>支持Markdown语法</span>
+        <Button styleName="" htmlType="submit" loading={submitting} onClick={onSubmit} type="primary">
           添加评论
         </Button>
       </div>
@@ -97,18 +97,18 @@ class ArticleComments extends Component {
     const { username, avatar, commentsList, fetchData, articleId} = this.props
 
     return (
-      <div className="comment-wrapper">
-        <div className="comment-header">
-          <span className="count">{commentsList.length}</span>
+      <div styleName="comment-wrapper">
+        <div styleName="comment-header">
+          <span styleName="count">{commentsList.length}</span>
           {' '}条评论
-          <span className="menu-wrap">
+          <span styleName="menu-wrap">
             <Dropdown overlay={this.renderDropdownMenu()} trigger={['click', 'hover']}>
               <span>
                 {username ? username : '未登录用户'} <Icon type="down" />
               </span>
             </Dropdown>
           </span>
-          <Divider className="hr" />
+          <Divider styleName="hr" />
         </div>
         <Comment 
           avatar={(

@@ -101,50 +101,50 @@ class ArticleDetail extends Component {
   render() {
     const { isArticleLoaded, title, content ,author, authorAvatar, categories, createdAt, commentsList, isLike, likesCount} = this.state
     const list = categories.map((v) => (
-			<span key={v} className="tag">
+			<span key={v} styleName="tag">
 				{v}
 			</span>
 		));
 
     return (
-      <div className="article">
-        <div className="header">
-          <div className="title">{title}</div>
-          <div className="author">
-            <a href="/" className="avatar">
+      <div styleName="article">
+        <div styleName="header">
+          <div styleName="title">{title}</div>
+          <div styleName="author">
+            <a href="/" styleName="avatar">
               <Avatar 
-                className="auth-logo"
+                // styleName="auth-logo"
                 src={(isPro ? 'http://mrshulan.xin' : 'http://127.0.0.1:6001') + authorAvatar}
                 size={50}
                 icon="user" />
             </a>
-            <div className="info">
-              <span className="name">
+            <div styleName="info">
+              <span styleName="name">
                 <a href="/">{author}</a>
               </span>
               <div props-data-classes="user-follow-button-header" data-author-follow-button="" />
-              <div className="meta">
-                <span className="publish-time">
+              <div styleName="meta">
+                <span >
                   发表于: {timestampToTime(createdAt, true)}
                 </span>
-                <span className="wordage">字数 {this.contentwords}</span>
-								<span className="likes-count">点赞 {likesCount}</span>
-								<span className="comments-count">评论 {commentsList.length}</span>
+                <span >字数 {this.contentwords}</span>
+								<span >点赞 {likesCount}</span>
+								<span >评论 {commentsList.length}</span>
               </div>
             </div>
-            <div className="tags " title="标签">
+            <div styleName="tags" title="标签">
 							<Icon type="tags" theme="outlined" />
 							{list}
 						</div>
-						<span className="clearfix" />
+						<div styleName="clearfix"></div>
           </div>
         </div>
 
         {isArticleLoaded ? '' : <LoadingCom /> }
 
-        <div className="article-detail" dangerouslySetInnerHTML={{ __html: content }} />
+        <div styleName="article-detail" dangerouslySetInnerHTML={{ __html: content }} />
 
-        <div className="heart">
+        <div styleName="heart">
 					<Button
 						type="danger"
 						size="large"

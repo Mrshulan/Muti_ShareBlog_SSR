@@ -107,12 +107,12 @@ class Edit extends Component {
   render() {
     const { title, categoryList } = this.state
     return (
-      <div className='edit'>
-        <div className="editItem">
-          <span className='label'>标题: </span>
+      <div>
+        <div styleName="editItem">
+          <span styleName='label'>标题: </span>
           <Input 
             placeholder="请输入文章标题"
-            className='titleIpt'
+            styleName='titleIpt'
             name="title"
             value={title}
             onChange={this.handleChange}

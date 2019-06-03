@@ -2,18 +2,26 @@ import { message } from 'antd'
 import { actions as appActions } from './app'
 import axios from '../../utils/axios'
 import md5 from 'md5'
-// import Storage from '../../utils/storage'
+import Storage from '../../utils/storage'
 
-// const cache = new Storage()
-// const cache = {}
-// const { userId, username, role, avatar, tellphone, info } = cache.get('info') || {}
+let cache = null
+
+try{
+  cache = new Storage()
+} catch(e) {
+  // 处理服务端无法拥有localstorage
+  cache = { get: () => ({}) }
+}
+
+let { userId, username, role, avatar, tellphone, info } = cache.get('info') || {}
+
 let initialState = {
-  userId: null,
-  username: '',
-  role:'1',
-  avatar:'',
-  tellphone: 18473871766,
-  info: {}
+  userId: userId || null,
+  username: username || '',
+  role: role || '1',
+  avatar: avatar || '',
+  tellphone: tellphone || 18473871766,
+  info: info || {}
 }
 
 export const types = {
@@ -21,7 +29,8 @@ export const types = {
   REGISTER: 'AUTH/REGiSTER',
   LOGOUT: 'AUTH/LOGOUT',
   UPDATEAVATAR: 'AUTH/UPDATEAVATAR',
-  UPDATEINFO: 'AUTH/UPDATEINFO'
+  UPDATEINFO: 'AUTH/UPDATEINFO',
+  RECOVERY: 'AUTH/RECOVERY'
 }
 
 
@@ -35,7 +44,7 @@ export const actions = {
         if(res.status === 200) {
           const { userId, username, role, avatar, tellphone, info} = res
           const data = { userId, username, role, avatar,  tellphone, info }
-          // cache.set('info', data, 86400000)
+          cache.set('info', data, 86400000)
           message.success(res.message)
           dispatch(actions.setLoginInfo(data))
         } else {
@@ -65,14 +74,14 @@ export const actions = {
   logout: () => {
     axios.get('/logout').then(res => {
       message.success(res.message)
-      // cache.remove('info')
+      cache.remove('info')
     })
     return {
       type: types.LOGOUT
     }
   },
   updateAvatar: (path) => {
-    // cache.set("info", { ...cache.get('info'), avatar: path })
+    cache.set("info", { ...cache.get('info'), avatar: path })
     return {
       type: types.UPDATEAVATAR,
       payload: {
@@ -81,7 +90,7 @@ export const actions = {
     }
   },
   updateInfo: (data) => {
-    // cache.set("info", { ...cache.get('info'), info: data })
+    cache.set("info", { ...cache.get('info'), info: data })
     return {
       type: types.UPDATEINFO,
       payload: {
@@ -92,14 +101,24 @@ export const actions = {
   setLoginInfo: (payload) => ({
     type: types.LOGIN,
     payload
-  })  
+  }),
+  recovery: () => {
+    const source = new Storage()
+    let { userId, username, role, avatar, tellphone, info } = source.get('info') || {}
+    let data = { userId, username, role, avatar,  tellphone, info }
+    
+    return {
+      type: types.RECOVERY,
+      payload: data
+    }
+  }
 }
 
 const reducer = (state = initialState, action) => {
   const { type, payload } = action
   switch(type) {
     case types.LOGIN:
-      const { userId, username, avatar, role, tellphone, info} = payload
+      let { userId, username, avatar, role, tellphone, info } = payload
       return { ...state, userId, username, avatar, role, tellphone, info}
     case types.LOGOUT:
       return { userId: null, username: '',role: 0, avatar: '', info: {}, tellphone: 18473871766}
@@ -107,6 +126,8 @@ const reducer = (state = initialState, action) => {
       return {...state, avatar: action.payload.path }
     case types.UPDATEINFO:
       return {...state, info: action.payload.data }
+    case types.RECOVERY:
+      return { ...state, ...payload }
     default:
       return state
   }

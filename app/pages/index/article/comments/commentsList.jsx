@@ -2,6 +2,7 @@ import React, { Component, useState } from 'react'
 import { Comment, Avatar, Tooltip, message, Input, Button} from 'antd'
 import { translateMarkdown, timestampToTime } from '../../../../utils/utils'
 import axios from '@/utils/axios'
+import './index.less'
 
 const isPro = process.env.NODE_ENV === 'production'
 
@@ -37,7 +38,7 @@ const CommentItem = (({ item, fatherId, handleSubmit, children }) => {
       )}
       content={
         <div
-          className="article-detail"
+          // styleName="article-detail"
           dangerouslySetInnerHTML={{ __html: translateMarkdown(item.content)}}
         />
       }
@@ -48,15 +49,15 @@ const CommentItem = (({ item, fatherId, handleSubmit, children }) => {
       }
     >
        {(replySwitch) && (
-        <div className="reply-form">
+        <div styleName="reply-form">
           <Input.TextArea
             placeholder={`回复楼主点什么吧...`}
             value={replyContent}
             onChange={handleChange}
             onKeyUp={handleKeyUp}
           />
-          <div className="reply-form-controls">
-            <span className="tip">Ctrl or ⌘ + Enter</span>
+          <div styleName="reply-form-controls">
+            <span styleName="tip">Ctrl or ⌘ + Enter</span>
             <Button htmlType="submit" type="primary" disabled={!replyContent.trim()} onClick={onSubmit}>
               回复
             </Button>

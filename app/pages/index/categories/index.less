@@ -1,7 +1,4 @@
-.ant-badge-count {
-  z-index: 0;
-}
-.ant-badge {
+.badge {
   &:nth-child(2n) .item {
     background-color: #1890ff;
   }
@@ -34,5 +31,8 @@
     background-color: red;
     color: #fff;
     margin: 10px 10px 0 0;
+    & + .ant-badge-count {
+      z-index: 0 !important;
+    }
   }
 }

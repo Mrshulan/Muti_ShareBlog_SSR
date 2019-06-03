@@ -1,4 +1,4 @@
-import React, { Component }from 'react'
+import React, { Component, useEffect }from 'react'
 import { Layout, BackTop } from 'antd'
 import { connect } from 'react-redux'
 import Nav from './nav/'
@@ -6,10 +6,19 @@ import SliderRight from './slider'
 import './index.less'
 const { Content, Footer, Sider } = Layout
 import { renderRoutes } from "react-router-config";
+import { actions as authActions } from '@/redux/modules/auth'
+import { bindActionCreators } from 'redux'
 
 const mapStateToProps = (state) => ({
   userInfo: state.auth
 })
+
+const mapDispatchToProps = dispatch => {
+  return {
+    ...bindActionCreators(authActions, dispatch)
+  }
+}
+
 
 const Layouts = (props) => {
   let isShowSlider = true
@@ -19,6 +28,12 @@ const Layouts = (props) => {
   } else {
     isShowSlider = true
   }
+
+  useEffect(() => {
+    if(!props.userInfo.userId) {
+      props.recovery()
+    }
+  },[]) 
 
   return (
     <div styleName="Layouts">
@@ -45,4 +60,5 @@ const Layouts = (props) => {
   )
 }
 
-export default connect(mapStateToProps)(Layouts)
+
+export default connect(mapStateToProps, mapDispatchToProps)(Layouts)

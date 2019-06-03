@@ -47,7 +47,7 @@ const Categoires = ({selfCategories}) => {
   },[])
   
   const categoriesList = list.map((item, i) => (
-    <Badge key={item.linkname} count={item.countArticles || 0} offset={[-10, 10]} style={{ backgroundColor: '#52c41a' }} >
+    <Badge styleName='badge' key={item.linkname} count={item.countArticles || 0} offset={[-10, 10]} style={{ backgroundColor: '#52c41a' }} >
       <Link styleName='item' to={`/categories/${item.linkname}`}>
           <span>{item.name}</span>
       </Link>
