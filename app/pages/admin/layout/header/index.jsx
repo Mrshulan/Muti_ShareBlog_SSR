@@ -26,6 +26,11 @@ class Header extends Component {
     )
   }
 
+  componentDidMount() {
+    if(!this.props.username) {
+      this.props.recovery()
+    }
+  }
 
   render () {
     const { collapsed, username, avatar} = this.props

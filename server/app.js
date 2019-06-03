@@ -2,14 +2,13 @@ const Koa = require('koa')
 const fs = require('fs')
 const path = require('path')
 
-const render = require('./render')
-const router = require('./router')
-
-const resolve = file => path.resolve(__dirname, file)
 const app = new Koa()
+const router = require('koa-router')()
 const env = process.env.NODE_ENV
 const config = require('../build/config')[env]
 const isPro = process.env.NODE_ENV === 'production'
+const render = require('./render')
+const resolve = file => path.resolve(__dirname, file)
 
 let serverBundle
 let template
@@ -31,7 +30,7 @@ router.get('*', async (ctx, next) => {
       const { bundle, clientHtml } = await readyPromise
       await render(ctx, bundle, clientHtml)
   }
-  next()
+  await next()
 })
 
 app.use(require('koa-static')(path.join(__dirname, '../dist')))

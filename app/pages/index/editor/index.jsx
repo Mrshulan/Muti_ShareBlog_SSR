@@ -55,9 +55,11 @@ class Edit extends Component {
         categoryList: [...this.state.categoryList, ...data]
       })
     })
-    this.smde = import('simplemde').then(({SimpleMDE}) => {
+
+    import('simplemde').then(({default: SimpleMDE}) => {
       import ('simplemde/dist/simplemde.min.css') 
-      return new SimpleMDE({
+
+      this.smde = new SimpleMDE({
         element: document.getElementById('editor'),
         autofocus: true,
         autosave: {
