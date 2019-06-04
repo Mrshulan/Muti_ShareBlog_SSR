@@ -15,7 +15,7 @@ console.log(hydrateData)
 // 在production下 hyrate text node无警告
 ReactDom.hydrate(
   <Provider store={store}>
-    <BrowserRouter>{ routes }</BrowserRouter>
+    <BrowserRouter basename='/blogssr'>{ routes }</BrowserRouter>
   </Provider>,
   document.getElementById('app')
 )

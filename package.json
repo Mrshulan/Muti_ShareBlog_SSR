@@ -1,7 +1,7 @@
 {
     "name": "react-ssr",
     "version": "1.0.0",
-    "description": "react-srr test",
+    "description": "react-srr",
     "main": "main.js",
     "scripts": {
         "build:client": "cross-env NODE_ENV=production webpack --progress --hide-modules --config build/webpack.client.config.js",
