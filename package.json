@@ -29,7 +29,7 @@
         "react-transition-group": "^4.1.0",
         "redux": "^4.0.1",
         "redux-thunk": "^2.3.0",
-        "serialize-javascript": "^2.1.1",
+        "serialize-javascript": "^4.0.0",
         "simplemde": "^1.11.2"
     },
     "devDependencies": {
